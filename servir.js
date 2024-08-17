@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 const db = new sqlite3.Database('database.db');
-
+//
 app.get('/alunos', (req, res) => {
     db.all("SELECT * FROM alunos", [], (err, rows) => {
         if (err) {
