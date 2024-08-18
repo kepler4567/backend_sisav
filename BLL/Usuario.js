@@ -19,6 +19,28 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/login', (req, res) => {
+    const { email, senha } = req.body;
+
+    const sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+    
+    db.get(sql, [email, senha], (err, row) => {
+
+        if (err) {
+            res.status(400).json({"error": err.message});
+            return;
+        }
+        if (!row) {
+            res.status(401).json({"message": "Login falhou, usuário ou senha incorretos", "row": row});
+            return;
+        }
+        res.json({
+            "message": "Login bem-sucedido",
+            "data": row
+        });
+    });
+});
+
 // READ - Buscar todos os usuários
 router.get('/', (req, res) => {
     const sql = 'SELECT * FROM usuario';
