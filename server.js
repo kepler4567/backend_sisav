@@ -11,10 +11,12 @@ app.use(express.json());
 // Importar rotas
 const usuarioRoutes = require('./BLL/usuario.js');
 const disciplina = require('./BLL/disciplina.js');
+const aac = require('./BLL/aac.js');
 
 // Usar rotas
 app.use('/usuario', usuarioRoutes);
 app.use('/disciplina', disciplina);
+app.use('/aac', aac);
 // Use as outras rotas aqui...
 
 app.listen(port, () => {
