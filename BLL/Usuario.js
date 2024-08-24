@@ -3,22 +3,6 @@ const router = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('database.db');
 
-// CREATE - Inserir um novo usuário
-router.post('/', (req, res) => {
-    const { ra, nome, email, senha, foto_perfil, tipo_usuario } = req.body;
-    const sql = 'INSERT INTO usuario (ra, nome, email, senha, foto_perfil, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?)';
-    db.run(sql, [ra, nome, email, senha, foto_perfil, tipo_usuario], function(err) {
-        if (err) {
-            res.status(400).json({"error": err.message});
-            return;
-        }
-        res.json({
-            "message": "success",
-            "data": { id: this.lastID }
-        });
-    });
-});
-
 router.get('/login', (req, res) => {
     const { email, senha } = req.body;
 
