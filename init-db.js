@@ -20,6 +20,7 @@ db.serialize(() => {
           id_disciplina INT PRIMARY KEY NOT NULL,
           nome_disciplina TEXT NOT NULL,
           dia_semana TEXT NOT NULL,
+          horario INT NOT NULL,
           id_usuario INT,
           FOREIGN KEY (id_usuario) REFERENCES usuario(ra)  -- Adiciona a chave estrangeira
       );`);
@@ -32,15 +33,15 @@ db.serialize(() => {
           (104, 'Ana Costa', 'ana.costa@email.com', 'senha101112');`);
   
       // Inserindo dados na tabela disciplina
-      db.run(`INSERT INTO disciplina (id_disciplina, nome_disciplina, dia_semana, id_usuario) VALUES 
-          (201, 'Matemática', 'Segunda-feira', 101),
-          (202, 'História', 'Terça-feira', 101),
-          (203, 'Geografia', 'Quarta-feira', 102),
-          (204, 'Química', 'Quinta-feira', 103),
-          (205, 'Física', 'Sexta-feira', 104),
-          (206, 'Biologia', 'Segunda-feira', 102),
-          (207, 'Inglês', 'Quarta-feira', 103),
-          (208, 'Educação Física', 'Sexta-feira', 101);`);
+      db.run(`INSERT INTO disciplina (id_disciplina, nome_disciplina, dia_semana, horario, id_usuario) VALUES 
+          (201, 'Matemática', 'Segunda-feira', 1, 101),
+          (202, 'História', 'Terça-feira',2, 101),
+          (203, 'Geografia', 'Quarta-feira',1, 101),
+          (204, 'Química', 'Quinta-feira',2, 101),
+          (205, 'Física', 'Sexta-feira',1, 101),
+          (206, 'Biologia', 'Segunda-feira',2, 101),
+          (207, 'Inglês', 'Quarta-feira',1, 101),
+          (208, 'Educação Física', 'Sexta-feira',1, 101);`);
   });
   
   db.close();

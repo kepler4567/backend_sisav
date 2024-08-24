@@ -9,7 +9,8 @@ router.get('/horarios', (req, res) => {
 
     const sql = `SELECT 
                     d.nome_disciplina, 
-                    d.dia_semana 
+                    d.dia_semana,
+                    d.horario
                 FROM 
                     disciplina d
                 JOIN 
@@ -38,7 +39,7 @@ router.get('/', (req, res) => {
 
     const sql = `SELECT 
                     d.nome_disciplina, 
-                    d.dia_semana 
+                    d.dia_semana
                 FROM 
                     disciplina d`;
 
