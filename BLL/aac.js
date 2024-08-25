@@ -4,8 +4,8 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('database.db');
 
 
-router.get('/', (req, res) => {
-    const { ra_aluno } = req.body;
+router.get('/:ra_aluno', (req, res) => {
+    const { ra_aluno } = req.params;
 
     const sql = `SELECT 
                     a.nome,
