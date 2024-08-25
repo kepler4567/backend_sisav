@@ -12,7 +12,8 @@ db.serialize(() => {
           ra INT PRIMARY KEY NOT NULL,
           nome TEXT NOT NULL,
           email TEXT NOT NULL,
-          senha TEXT NOT NULL
+          senha TEXT NOT NULL,
+          serie INT
       );`);
   
       // Criação da tabela disciplina
@@ -42,11 +43,8 @@ db.serialize(() => {
 
   
       // Inserindo dados na tabela usuario
-      db.run(`INSERT INTO usuario (ra, nome, email, senha) VALUES 
-          (101, 'João Silva', 'joao.silva@email.com', 'senha123'),
-          (102, 'Maria Oliveira', 'maria.oliveira@email.com', 'senha456'),
-          (103, 'Carlos Souza', 'carlos.souza@email.com', 'senha789'),
-          (104, 'Ana Costa', 'ana.costa@email.com', 'senha101112');`);
+      db.run(`INSERT INTO usuario (ra, nome, email, senha, serie) VALUES 
+          (101, 'João Silva', 'joao.silva@email.com', 'senha123', 4);`);
   
       // Inserindo dados na tabela disciplina
       db.run(`INSERT INTO disciplina (id_disciplina, nome_disciplina, dia_semana, horario, id_usuario, situacao, faltas, media, serie, carga) VALUES 
