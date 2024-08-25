@@ -15,6 +15,15 @@ db.serialize(() => {
           senha TEXT NOT NULL,
           serie INT
       );`);
+
+      // Criação da tabela documentos
+      db.run(`CREATE TABLE IF NOT EXISTS documentos(
+        ra INT,
+        nome TEXT NOT NULL,
+        numero INT,
+        FOREIGN KEY (ra) REFERENCES usuario(ra)
+    );`);
+
   
       // Criação da tabela disciplina
       db.run(`CREATE TABLE IF NOT EXISTS disciplina (
@@ -63,6 +72,15 @@ db.serialize(() => {
     (303, 'Voluntariado', 40, 2023, 'Concluído', 102),
     (304, 'Participação em Congresso', 10, 2024, 'Pendente', 103),
     (305, 'Oficina de Capacitação', 15, 2023, 'Concluído', 104);`);
+
+    db.run(`INSERT INTO documentos (ra, nome, numero) VALUES 
+    (101, 'Documento Identidade', 123456789),
+    (101, 'Certidão de Nascimento', 987654321),
+    (101, 'Passaporte', 112233445),
+    (101, 'Carteira de Motorista', 556677889),
+    (101, 'Carteira de Estudante', 445566778);`);
+
+    
 });
   
   db.close();
