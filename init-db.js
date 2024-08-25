@@ -25,6 +25,8 @@ db.serialize(() => {
           situacao TEXT,
           faltas INT,
           media INT,
+          serie INT,
+          carga INT,
           FOREIGN KEY (id_usuario) REFERENCES usuario(ra)  -- Adiciona a chave estrangeira
       );`);
 
@@ -47,15 +49,15 @@ db.serialize(() => {
           (104, 'Ana Costa', 'ana.costa@email.com', 'senha101112');`);
   
       // Inserindo dados na tabela disciplina
-      db.run(`INSERT INTO disciplina (id_disciplina, nome_disciplina, dia_semana, horario, id_usuario, situacao, faltas, media) VALUES 
-          (201, 'Matemática', 'Segunda-feira', 1, 101, 'reprovado', 3, 50),
-          (202, 'História', 'Terça-feira',2, 101, 'aprovado', 5, 70),
-          (203, 'Geografia', 'Quarta-feira',2, 101, 'em andamento', 4, null),
-          (204, 'Química', 'Quinta-feira',2, 101, 'aprovado', 1, 66),
-          (205, 'Física', 'Sexta-feira',2, 101, 'aprovado', 2, 80),
-          (206, 'Biologia', 'Segunda-feira',2, 101, 'em andamento', 4, null),
-          (207, 'Inglês', 'Quarta-feira',1, 101, 'aprovado', 2, 70),
-          (208, 'Educação Física', 'Sexta-feira',1, 101, 'reprovado', 1, 44);`);
+      db.run(`INSERT INTO disciplina (id_disciplina, nome_disciplina, dia_semana, horario, id_usuario, situacao, faltas, media, serie, carga) VALUES 
+          (201, 'Matemática', 'Segunda-feira', 1, 101, 'reprovado', 3, 50, 1, 38),
+          (202, 'História', 'Terça-feira',2, 101, 'aprovado', 5, 70, 2, 38),
+          (203, 'Geografia', 'Quarta-feira',2, 101, 'em andamento', 4, null, 2, 38),
+          (204, 'Química', 'Quinta-feira',2, 101, 'aprovado', 1, 66, 2, 38),
+          (205, 'Física', 'Sexta-feira',2, 101, 'aprovado', 2, 80, 2, 38),
+          (206, 'Biologia', 'Segunda-feira',2, 101, 'em andamento', 4, null, 2, 38),
+          (207, 'Inglês', 'Quarta-feira',1, 101, 'aprovado', 2, 70, 2, 38),
+          (208, 'Educação Física', 'Sexta-feira',1, 101, 'reprovado', 1, 44, 2, 38);`);
 
     db.run(`INSERT INTO AAC (id_aac, nome, horas, ano, status, ra_aluno) VALUES 
     (301, 'Projeto de Extensão', 30, 2023, 'Concluído', 101),
