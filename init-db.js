@@ -99,6 +99,41 @@ db.serialize(() => {
     (3, 'Atestado de Frequência', '15/08/2024', 'João Silva', 'Em Andamento', 101),
     (4, 'Certificado de Conclusão', '20/08/2024', 'João Silva', 'Pendente', 101),
     (5, 'Comprovante de Inscrição', '25/08/2024', 'João Silva', 'Concluído', 101);`);
+
+
+
+    // Inserindo o novo usuário na tabela usuario
+db.run(`INSERT INTO usuario (ra, nome, email, senha, serie) VALUES 
+  (10000, 'Nelson Tenório', 'nelson.tenorio@email.com', 'epimeteu', 4);`);
+
+// Inserindo disciplinas para o novo usuário
+db.run(`INSERT INTO disciplina (id_disciplina, nome_disciplina, dia_semana, horario, id_usuario, situacao, faltas, media, serie, carga) VALUES 
+  (209, 'Português', 'Segunda-feira', 1, 10000, 'em andamento', 2, null, 1, 38),
+  (210, 'História', 'Terça-feira', 2, 10000, 'aprovado', 3, 75, 2, 38),
+  (211, 'Geografia', 'Quarta-feira', 2, 10000, 'em andamento', 4, null, 2, 38),
+  (212, 'Matemática', 'Quinta-feira', 1, 10000, 'em andamento', 1, null, 2, 38),
+  (213, 'Química', 'Sexta-feira', 1, 10000, 'aprovado', 2, 85, 2, 38);`);
+
+// Inserindo atividades AAC para o novo usuário
+db.run(`INSERT INTO AAC (id_aac, nome, horas, ano, status, ra_aluno) VALUES 
+  (306, 'Curso de Verão', 25, 2024, 'Pendente', 10000),
+  (307, 'Voluntariado', 35, 2023, 'Concluído', 10000),
+  (308, 'Participação em Congresso', 15, 2024, 'Pendente', 10000);`);
+
+// Inserindo documentos para o novo usuário
+db.run(`INSERT INTO documentos (ra, nome, numero) VALUES 
+  (10000, 'Documento Identidade', 223344556),
+  (10000, 'Certidão de Nascimento', 334455667),
+  (10000, 'Passaporte', 556677889),
+  (10000, 'Carteira de Motorista', 667788990);`);
+
+// Inserindo solicitações para o novo usuário
+db.run(`INSERT INTO solicitacoes (id, nome_documento, data_criacao, solicitado_por, status, ra_aluno) VALUES 
+  (6, 'Histórico Escolar', '01/09/2024', 'Nelson Tenório', 'Pendente', 10000),
+  (7, 'Declaração de Matrícula', '05/09/2024', 'Nelson Tenório', 'Concluído', 10000),
+  (8, 'Atestado de Frequência', '10/09/2024', 'Nelson Tenório', 'Em Andamento', 10000),
+  (9, 'Certificado de Conclusão', '15/09/2024', 'Nelson Tenório', 'Pendente', 10000);`);
+
     
 });
   
