@@ -31,6 +31,30 @@ router.get('/:ra_aluno', (req, res) => {
 });
 
 
+router.post('/', (req, res) => {
+    const { id, nome_documento, data_criacao, solicitado_por, status, ra_aluno } = req.body;
+
+    const sql = `INSERT INTO solicitacoes (id, nome_documento, data_criacao, solicitado_por, status, ra_aluno)
+                 VALUES (?, ?, ?, ?, ?, ?)`;
+
+    db.run(sql, [id, nome_documento, data_criacao, solicitado_por, status, ra_aluno], function(err) {
+        if (err) {
+            res.status(400).json({ "error": err.message });
+            return;
+        }
+        res.json({
+            "message": "Solicitação criada com sucesso",
+            "data": {
+                id: this.lastID,
+                nome_documento,
+                data_criacao,
+                solicitado_por,
+                status,
+                ra_aluno
+            }
+        });
+    });
+});
 
 
 module.exports = router;
