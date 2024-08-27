@@ -50,6 +50,18 @@ db.serialize(() => {
             FOREIGN KEY (ra_aluno) REFERENCES usuario(ra)
         );`);
 
+        db.run(`CREATE TABLE IF NOT EXISTS solicitacoes (
+          id INT PRIMARY KEY NOT NULL,
+          nome_documento TEXT NOT NULL,
+          data_criacao TEXT,
+          solicitado_por TEXT,
+          status TEXT,
+          ra_aluno INT,
+          FOREIGN KEY (ra_aluno) REFERENCES usuario(ra)
+      );`);
+          //id, nome do documento, nome de quem solicitou e data
+
+
   
       // Inserindo dados na tabela usuario
       db.run(`INSERT INTO usuario (ra, nome, email, senha, serie) VALUES 
@@ -80,6 +92,13 @@ db.serialize(() => {
     (101, 'Carteira de Motorista', 556677889),
     (101, 'Carteira de Estudante', 445566778);`);
 
+
+    db.run(`INSERT INTO solicitacoes (id, nome_documento, data_criacao, solicitado_por, status, ra_aluno) VALUES 
+    (1, 'Histórico Escolar', '01/08/2024', 'João Silva', 'Pendente', 101),
+    (2, 'Declaração de Matrícula', '10/08/2024', 'João Silva', 'Concluído', 101),
+    (3, 'Atestado de Frequência', '15/08/2024', 'João Silva', 'Em Andamento', 101),
+    (4, 'Certificado de Conclusão', '20/08/2024', 'João Silva', 'Pendente', 101),
+    (5, 'Comprovante de Inscrição', '25/08/2024', 'João Silva', 'Concluído', 101);`);
     
 });
   

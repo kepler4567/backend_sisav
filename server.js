@@ -13,12 +13,14 @@ const usuarioRoutes = require('./BLL/usuario.js');
 const disciplina = require('./BLL/disciplina.js');
 const aac = require('./BLL/aac.js');
 const documentos = require('./BLL/documentos.js');
+const solicitacoes = require('./BLL/solicitacoes.js');
 
 // Usar rotas
 app.use('/usuario', usuarioRoutes);
 app.use('/disciplina', disciplina);
 app.use('/aac', aac);
-app.use('/documentos', documentos)
+app.use('/documentos', documentos);
+app.use('/solicitacoes', solicitacoes);
 
 // Use as outras rotas aqui...
 
