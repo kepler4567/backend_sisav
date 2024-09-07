@@ -51,7 +51,7 @@ db.serialize(() => {
         );`);
 
         db.run(`CREATE TABLE IF NOT EXISTS solicitacoes (
-          id INT PRIMARY KEY NOT NULL,
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
           nome_documento TEXT NOT NULL,
           data_criacao TEXT,
           solicitado_por TEXT,
@@ -93,12 +93,12 @@ db.serialize(() => {
     (101, 'Carteira de Estudante', 445566778);`);
 
 
-    db.run(`INSERT INTO solicitacoes (id, nome_documento, data_criacao, solicitado_por, status, ra_aluno) VALUES 
-    (1, 'Histórico Escolar', '01/08/2024', 'João Silva', 'Pendente', 101),
-    (2, 'Declaração de Matrícula', '10/08/2024', 'João Silva', 'Concluído', 101),
-    (3, 'Atestado de Frequência', '15/08/2024', 'João Silva', 'Em Andamento', 101),
-    (4, 'Certificado de Conclusão', '20/08/2024', 'João Silva', 'Pendente', 101),
-    (5, 'Comprovante de Inscrição', '25/08/2024', 'João Silva', 'Concluído', 101);`);
+    db.run(`INSERT INTO solicitacoes (nome_documento, data_criacao, solicitado_por, status, ra_aluno) VALUES 
+    ('Histórico Escolar', '01/08/2024', 'João Silva', 'Pendente', 101),
+    ('Declaração de Matrícula', '10/08/2024', 'João Silva', 'Concluído', 101),
+    ('Atestado de Frequência', '15/08/2024', 'João Silva', 'Em Andamento', 101),
+    ('Certificado de Conclusão', '20/08/2024', 'João Silva', 'Pendente', 101),
+    ('Comprovante de Inscrição', '25/08/2024', 'João Silva', 'Concluído', 101);`);
 
 
 
@@ -128,11 +128,11 @@ db.run(`INSERT INTO documentos (ra, nome, numero) VALUES
   (10000, 'Carteira de Motorista', 667788990);`);
 
 // Inserindo solicitações para o novo usuário
-db.run(`INSERT INTO solicitacoes (id, nome_documento, data_criacao, solicitado_por, status, ra_aluno) VALUES 
-  (6, 'Histórico Escolar', '01/09/2024', 'Nelson Tenório', 'Pendente', 10000),
-  (7, 'Declaração de Matrícula', '05/09/2024', 'Nelson Tenório', 'Concluído', 10000),
-  (8, 'Atestado de Frequência', '10/09/2024', 'Nelson Tenório', 'Em Andamento', 10000),
-  (9, 'Certificado de Conclusão', '15/09/2024', 'Nelson Tenório', 'Pendente', 10000);`);
+db.run(`INSERT INTO solicitacoes (nome_documento, data_criacao, solicitado_por, status, ra_aluno) VALUES 
+  ('Histórico Escolar', '01/09/2024', 'Nelson Tenório', 'Pendente', 10000),
+  ('Declaração de Matrícula', '05/09/2024', 'Nelson Tenório', 'Concluído', 10000),
+  ('Atestado de Frequência', '10/09/2024', 'Nelson Tenório', 'Em Andamento', 10000),
+  ('Certificado de Conclusão', '15/09/2024', 'Nelson Tenório', 'Pendente', 10000);`);
 
     
 });

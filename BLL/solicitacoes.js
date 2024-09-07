@@ -32,12 +32,23 @@ router.get('/:ra_aluno', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    const { id, nome_documento, data_criacao, solicitado_por, status, ra_aluno } = req.body;
+    const {nome_documento, ra_aluno } = req.body;
+    const solicitado_por = "teste"
+    const status = "Pendente"
 
-    const sql = `INSERT INTO solicitacoes (id, nome_documento, data_criacao, solicitado_por, status, ra_aluno)
-                 VALUES (?, ?, ?, ?, ?, ?)`;
+    const hoje = new Date();
+    const dia = String(hoje.getDate()).padStart(2, '0');
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0'); // O mês começa do zero, então é necessário adicionar 1
+    const ano = hoje.getFullYear();
 
-    db.run(sql, [id, nome_documento, data_criacao, solicitado_por, status, ra_aluno], function(err) {
+    const dataFormatada = `${dia}/${mes}/${ano}`;
+
+
+
+    const sql = `INSERT INTO solicitacoes (nome_documento, data_criacao, solicitado_por, status, ra_aluno)
+                 VALUES (?, ?, ?, ?, ?)`;
+
+    db.run(sql, [nome_documento, dataFormatada, solicitado_por, status, ra_aluno], function(err) {
         if (err) {
             res.status(400).json({ "error": err.message });
             return;
@@ -47,7 +58,7 @@ router.post('/', (req, res) => {
             "data": {
                 id: this.lastID,
                 nome_documento,
-                data_criacao,
+                dataFormatada,
                 solicitado_por,
                 status,
                 ra_aluno
