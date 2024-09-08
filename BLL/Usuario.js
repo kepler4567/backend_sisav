@@ -25,7 +25,6 @@ router.get('/login', (req, res) => {
     });
 });
 
-// READ - Buscar todos os usuários
 router.get('/', (req, res) => {
     const sql = 'SELECT * FROM usuario';
     db.all(sql, [], (err, rows) => {
@@ -40,7 +39,6 @@ router.get('/', (req, res) => {
     });
 });
 
-// READ - Buscar um usuário por RA
 router.get('/:ra', (req, res) => {
     const { ra } = req.params;
     const sql = 'SELECT * FROM usuario WHERE ra = ?';
@@ -56,7 +54,6 @@ router.get('/:ra', (req, res) => {
     });
 });
 
-// UPDATE - Atualizar um usuário
 router.put('/:ra', (req, res) => {
     const { ra } = req.params;
     const { nome, email, senha, foto_perfil, tipo_usuario } = req.body;
@@ -79,7 +76,6 @@ router.put('/:ra', (req, res) => {
     });
 });
 
-// DELETE - Deletar um usuário
 router.delete('/:ra', (req, res) => {
     const { ra } = req.params;
     const sql = 'DELETE FROM usuario WHERE ra = ?';

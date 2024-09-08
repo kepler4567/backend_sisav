@@ -14,18 +14,18 @@ router.get('/:ra_aluno', (req, res) => {
                 WHERE 
                 ra_aluno = ?;`;
 
-    db.all(sql, [ra_aluno], (err, rows) => {  // Alterado de db.get para db.all
+    db.all(sql, [ra_aluno], (err, rows) => {  
         if (err) {
             res.status(400).json({ "error": err.message });
             return;
         }
-        if (rows.length === 0) {  // Verifica se o array de resultados está vazio
+        if (rows.length === 0) {  
             res.status(404).json({ "message": "Nenhuma disciplina encontrada para este aluno" });
             return;
         }
         res.json({
             "message": "Disciplinas encontradas",
-            "data": rows  // Retorna todas as linhas encontradas
+            "data": rows  
         });
     });
 });
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
 
     const hoje = new Date();
     const dia = String(hoje.getDate()).padStart(2, '0');
-    const mes = String(hoje.getMonth() + 1).padStart(2, '0'); // O mês começa do zero, então é necessário adicionar 1
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0'); 
     const ano = hoje.getFullYear();
 
     const dataFormatada = `${dia}/${mes}/${ano}`;
